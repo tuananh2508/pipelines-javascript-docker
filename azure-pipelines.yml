@@ -35,7 +35,7 @@ stages:
     displayName: Deploy job
     pool:
       vmImage: $(vmImageName)
-    environment: 'myenv.aksnamespace' #customize with your environment
+    environment: 'dev.default' #customize with your environment
     strategy:
       runOnce:
         deploy:
