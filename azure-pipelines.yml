@@ -16,12 +16,11 @@ stages:
     - task: Docker@2
       displayName: Build and push an image to container registry
       inputs:
-        command: buildAndPush
-        repository: $(imageRepository)
-        dockerfile: $(dockerfilePath)
-        containerRegistry: $(docker)
-        tags: |
-          $(tag)
+        containerRegistry: 'docker'
+        repository: 'nodejs'
+        command: 'buildAndPush'
+        Dockerfile: '**/Dockerfile'
+        tags: 'v1'
 
     - task: PublishPipelineArtifact@1
       inputs:
