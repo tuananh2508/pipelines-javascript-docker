@@ -55,6 +55,7 @@ stages:
                 git clone https://github.com/tuananh2508/pipelines-javascript-docker
                 cd pipelines-javascript-docker
                 ls
+                pwd
 
           - task: KubernetesManifest@0
             displayName: Deploy to Kubernetes cluster
@@ -62,4 +63,4 @@ stages:
               action: 'deploy'
               kubernetesServiceConnection: 'sample'
               namespace: 'default'
-              manifests: './deployment.yml'
+              manifests: 'pipelines-javascript-docker/deployment.yml'
