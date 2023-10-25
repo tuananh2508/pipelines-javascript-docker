@@ -69,8 +69,15 @@ stages:
             displayName: ScaleDown
             inputs:
               action: 'scale'
-              kubernetesServiceConnection: 'someK8sSC'
+              kubernetesServiceConnection: 'sample'
               namespace: 'default'
               kind: 'deployment'
               name: 'nodejs-deployment'
               replicas: '1'
+          - task: KubernetesManifest@0
+            displayName: ScaleDown
+            inputs:
+              action: 'delete'
+              kubernetesServiceConnection: 'sample'
+              namespace: 'default'
+              arguments: 'deployment nodejs-deployment'
