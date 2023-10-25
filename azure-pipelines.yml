@@ -54,4 +54,4 @@ stages:
               action: 'deploy'
               kubernetesServiceConnection: 'sample'
               namespace: 'default'
-              manifests: '$(System.ArtifactsDirectory)/deployment.yml$(System.ArtifactsDirectory)/service.yml'
+              manifests: '$(System.ArtifactsDirectory)/deployment.yml'
