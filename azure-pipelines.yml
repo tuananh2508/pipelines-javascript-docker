@@ -16,10 +16,10 @@ stages:
         command: 'buildAndPush'
         Dockerfile: '**/Dockerfile'
         tags: 'v1'
-    - task: PublishPipelineArtifact@1
-      inputs:
-        artifactName: 'manifests'
-        path: 'manifests'
+    # - task: PublishPipelineArtifact@1
+    #   inputs:
+    #     artifactName: 'manifests'
+    #     path: 'manifests'
 - stage: Deploy
   displayName: Deploy stage
   dependsOn: Build
