@@ -16,10 +16,7 @@ stages:
         command: 'buildAndPush'
         Dockerfile: '**/Dockerfile'
         tags: 'v1'
-    # - task: PublishPipelineArtifact@1
-    #   inputs:
-    #     artifactName: 'manifests'
-    #     path: 'manifests'
+
 - stage: Deploy
   displayName: Deploy stage
   dependsOn: Build
@@ -33,11 +30,6 @@ stages:
       runOnce:
         deploy:
           steps:
-          # - task: DownloadPipelineArtifact@2
-          #   inputs:
-          #     artifactName: 'manifests'
-          #     downloadPath: '$(System.ArtifactsDirectory)/manifests'
-
           - task: KubernetesManifest@0
             displayName: Create imagePullSecret
             inputs:
@@ -71,3 +63,13 @@ stages:
               kubernetesServiceConnection: 'sample'
               namespace: 'default'
               manifests: 'pipelines-javascript-docker/service.yaml'
+
+          - task: KubernetesManifest@0
+            displayName: ScaleDown
+            inputs:
+              action: 'scale'
+              kubernetesServiceConnection: 'someK8sSC'
+              namespace: 'default'
+              kind: 'deployment'
+              name: 'nodejs-deployment'
+              replicas: '1'
