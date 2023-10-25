@@ -12,11 +12,10 @@ stages:
       displayName: Build and push an image to container registry
       inputs:
         containerRegistry: 'docker'
-        repository: 'nodejs'
+        repository: 'ta2199/nodejs'
         command: 'buildAndPush'
         Dockerfile: '**/Dockerfile'
         tags: 'v1'
-
     - task: PublishPipelineArtifact@1
       inputs:
         artifactName: 'manifests'
