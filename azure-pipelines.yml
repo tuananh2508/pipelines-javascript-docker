@@ -27,7 +27,7 @@ stages:
   - deployment: Deploy
     displayName: Deploy job
     pool:
-      vmImage: $(vmImageName)
+      vmImage: ubuntu-latest
     environment: 'dev.default' #customize with your environment
     strategy:
       runOnce:
