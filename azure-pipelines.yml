@@ -56,6 +56,7 @@ stages:
               kubernetesServiceConnection: 'sample'
               namespace: 'default'
               manifests: 'pipelines-javascript-docker/deployment.yaml'
+              
           - task: KubernetesManifest@0
             displayName: Deploy to Kubernetes cluster
             inputs:
